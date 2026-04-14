@@ -8,8 +8,6 @@ meow@debserv:~/projet_cyber/projet-web-stats$ mkdir src && cd src
 nano Dockerfile
 
 :
-
-  GNU nano 8.4                                           Dockerfile
 FROM php:8.2-apache
 RUN docker-php-ext-install pdo pdo_mysql
 COPY . /var/www/html/
@@ -42,7 +40,7 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 ```
 cd src
-nana config.php
+nano config.php
 
 :
 
@@ -61,8 +59,6 @@ define('DB_DSN', 'mysql:host=' . DB_HOST . ';port=' . DB_PORT . ';dbname=' . DB_
 ```
 nano index.php
 ```bash
-nano src/index.php
-
 
 <?php
 /**
