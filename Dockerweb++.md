@@ -4,10 +4,10 @@ meow@debserv:~/projet_cyber$ mkdir projet-web-stats && cd projet-web-stats
 meow@debserv:~/projet_cyber/projet-web-stats$ mkdir src && cd src
 ```
 
-```
+```bash
 nano Dockerfile
-
-:
+```
+```bash
 FROM php:8.2-apache
 RUN docker-php-ext-install pdo pdo_mysql
 COPY . /var/www/html/
@@ -16,8 +16,8 @@ RUN chown -R www-data:www-data /var/www/html
 ```bash
 cd ..
 nano docker-compose.yml
-
-:
+```
+```bash
 
 version: '3.8'
 
@@ -39,10 +39,11 @@ services:
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 ```
+```bash
 cd src
 nano config.php
 
-:
+```
 
 ```bash 
 <?php
@@ -57,7 +58,9 @@ define('DB_DSN', 'mysql:host=' . DB_HOST . ';port=' . DB_PORT . ';dbname=' . DB_
 
 
 ```
+```bash
 nano index.php
+```
 ```bash
 
 <?php
@@ -485,8 +488,10 @@ On va mtn rajouter une ligne au init.php sinon notre docker web ne va pas pouvoi
 
 ```bash
 meow@debserv:~/projet_cyber$ nano init.sql
+```
  
 On rajoute ça après les commandes CREATE déjà existante :
+```bash
 
 CREATE USER IF NOT EXISTS 'user_web'@'172.%.%.%' IDENTIFIED BY 'PassWeb123!';
 GRANT SELECT ON backup_infra_db.* TO 'user_web'@'172.%.%.%';
